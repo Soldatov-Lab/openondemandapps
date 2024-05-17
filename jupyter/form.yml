@@ -63,10 +63,6 @@ attributes:
     label: Jupyter Binary
     help: Enter a path to the jupyter binary
     value: '/usersoftware/soldatr/faurel1/miniforge3/bin/jupyter-lab'
-  conda_env:
-    label: Conda Environment Name
-    help: Enter the name of the conda environment to use
-    value: 'base'
   notebook_directory:
     label: Notebook directory
     help: Enter a path to the notebooks
