@@ -13,10 +13,13 @@ batch_connect:
 script:
   queue_name: "<%= queue %>"
   native: # ... array of command line arguments ...
+     - "-p"
+     - "<%= queue %>"
+     - "-N"
+     - "1"
      - "-n"
      - "<%= num_cores %>"
-     - "-W"
-     - "<%= num_mins %>"
-     - "-R"
-     - "rusage[mem=<%= memory %>]select[type==CentOS7]"
-
+     - "--mem"
+     - "<%= memory %>G"
+     - "-t"
+     - "0-<%= num_hours %>:00:00"

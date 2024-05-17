@@ -8,7 +8,7 @@
 # under /etc/ood/config/clusters.d/*.yml
 # @example Use the Owens cluster at Ohio Supercomputer Center
 #     cluster: "owens"
-cluster: "juno"
+cluster: "iris"
 
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
@@ -33,7 +33,10 @@ attributes:
 
   queue:
     label: "Queue"
-    value: "general"
+    widget: 'select'
+    options:
+      - ["CPU","componc_cpu"]
+      - ["GPU","componc_gpu"]
   num_cores:
     widget: "number_field"
     label: "Number of cores"
@@ -45,19 +48,22 @@ attributes:
     value: 8
     step: 4
     help: "Requested memory"
-  num_mins:
-    value: 60
-    min: 5
+  num_hours:
+    value: 1
+    min: 1
     step: 1
     help: "Maximum wall time is 1 week"
   rstudio_image:
     label: RStudio Singularity Image
     help: Enter a path to a RStudio Server Image
-    value: '/juno/work/shah/users/mcphera1/rstudio/rocker-custom_latest.sif'
+    widget: 'select'
+    options:
+      - ["4.3.22",'/data1/soldatr/singularity/rocker-custom_4.3.22.sif']
+      - ["4.3.3",'/data1/soldatr/singularity/rocker-custom_4.3.3.sif']
   r_packages:
     label: R packages
     help: Enter a path to installed R packages
-    value: '/work/shah/users/mcphera1/rstudio/packages/'
+    value: '/usersoftware/soldatr/faurel1/r-packages/'
 
 # All of the attributes that make up the Dashboard form (in respective order),
 # and made available to the submit configuration file and the template ERB
@@ -74,6 +80,6 @@ form:
   - queue
   - num_cores
   - memory
-  - num_mins
+  - num_hours
   - rstudio_image
   - r_packages

@@ -21,15 +21,14 @@ To build the singularity image first build a docker image on your local machine 
 
 ```
 cd $REPODIR/docker
-docker build -t $DOCKERUSER/rocker-custom:latest -t $DOCKERUSER/rocker-custom:4.2.2 .
-docker push $DOCKERUSER/rocker-custom:latest
+docker build -t $DOCKERUSER/rocker-custom:4.2.2 .
 docker push $DOCKERUSER/rocker-custom:4.2.2
 ```
 
 Then build the singularity image with:
 
 ```
-cd $SINGIMAGEDIR
+cd /data1/soldatr/singularity/
 singularity pull docker://$DOCKERUSER/rocker-custom:4.2.2
 ```
 
