@@ -8,7 +8,7 @@
 # under /etc/ood/config/clusters.d/*.yml
 # @example Use the Owens cluster at Ohio Supercomputer Center
 #     cluster: "owens"
-cluster: "juno"
+cluster: "iris"
 
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
@@ -25,7 +25,7 @@ attributes:
   #     modules: "python/3.5"
   # @example Using combination of modules
   #     modules: "python/3.5 cuda/8.0.44"
-  modules: ""
+  modules: "cuda/12.0"
 
   # Any extra command line arguments to feed to the `jupyter notebook ...`
   # command that launches the Jupyter notebook within the batch job
@@ -33,7 +33,10 @@ attributes:
 
   queue:
     label: "Queue"
-    value: "general"
+    widget: 'select'
+    options:
+      - ["CPU","componc_cpu"]
+      - ["GPU","componc_gpu"]
   num_cores:
     widget: "number_field"
     label: "Number of cores"
@@ -41,27 +44,33 @@ attributes:
     help: "Maximum number of CPU cores is 72"
     min: 1
     step: 1
+  num_gpus:
+    widget: "number_field"
+    label: "Number of GPUs"
+    value: 0
+    min: 0
+    step: 1
   memory:
     value: 8
     step: 4
     help: "Requested memory"
-  num_mins:
-    value: 60
-    min: 5
+  num_hours:
+    value: 1
+    min: 1
     step: 1
     help: "Maximum wall time is 1 week"
   jupyter_binary:
     label: Jupyter Binary
     help: Enter a path to the jupyter binary
-    value: ''
+    value: '/usersoftware/soldatr/faurel1/miniforge3/bin/jupyter-lab'
   conda_env:
     label: Conda Environment Name
     help: Enter the name of the conda environment to use
-    value: ''
+    value: 'base'
   notebook_directory:
-    label: Notebooks directory
+    label: Notebook directory
     help: Enter a path to the notebooks
-    value: ''
+    value: '/data1/soldatr/louis/'
 
 
 # All of the attributes that make up the Dashboard form (in respective order),
@@ -78,7 +87,7 @@ form:
   - extra_jupyter_args
   - queue
   - num_cores
-  - num_mins
+  - num_hours
   - memory
   - jupyter_binary
   - conda_env
