@@ -4,8 +4,8 @@
 echo "TIMING - Starting main script at: $(date)"
 
 # Load modules
-<%- if !modules.blank? -%>
-module load <%= modules %>
+<%- if !context.modules.blank? -%>
+module load <%= context.modules %>
 <%- end -%>
 
 # Set PFILE
@@ -14,7 +14,7 @@ PFILE="${PWD}/password.txt"
 # Start VS Code Server
 echo "TIMING - Starting vscode at: $(date)"
 
-"<%= vscode_binary %>" serve-web \
+"<%= context.vscode_binary %>" serve-web \
   --host="0.0.0.0" \
   --port="${port}" \
   --connection-token-file="${PFILE}" \
