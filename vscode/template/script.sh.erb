@@ -14,7 +14,8 @@ PFILE="${PWD}/password.txt"
 # Start VS Code Server
 echo "TIMING - Starting vscode at: $(date)"
 
-"<%= context.vscode_binary %>" serve-web \
+set -x
+exec "<%= context.vscode_binary %>" serve-web \
   --host="0.0.0.0" \
   --port="${port}" \
   --connection-token-file="${PFILE}" \
