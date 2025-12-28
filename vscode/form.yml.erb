@@ -1,0 +1,69 @@
+---
+cluster: "iris"
+
+attributes:
+  modules: "cuda/12.0"
+  
+  queue:
+    label: "Queue"
+    widget: 'select'
+    options:
+      - ["CPU","componc_cpu"]
+      - ["GPU","componc_gpu"]
+  
+  num_cores:
+    widget: "number_field"
+    label: "Number of cores"
+    value: 1
+    help: "Maximum number of CPU cores is 72"
+    min: 1
+    step: 1
+  
+  num_gpus:
+    widget: "number_field"
+    label: "Number of GPUs"
+    value: 0
+    min: 0
+    step: 1
+  
+  memory:
+    widget: "number_field"
+    label: "Memory (GB)"
+    value: 8
+    min: 1
+    step: 1
+    help: "Requested memory in GB"
+  
+  num_hours:
+    widget: "number_field"
+    label: "Number of hours"
+    value: 1
+    min: 1
+    step: 1
+    help: "Maximum wall time is 1 week"
+
+  excluded_nodes:
+    widget: "text_field"
+    label: "Excluded Nodes"
+    help: "Comma-separated list of nodes to exclude (e.g., node01,node02). Leave blank if none."
+
+  vscode_binary:
+    label: VS Code Binary
+    help: Enter a path to the VS Code binary
+    value: '/admin/software/vscode/17/VSCode-linux-x64/bin/code'
+
+  working_directory:
+    label: Working directory
+    help: Enter a path to the working directory
+    value: '/home/faurel1'
+
+form:
+  - modules
+  - queue
+  - num_cores
+  - num_gpus
+  - num_hours
+  - memory
+  - excluded_nodes
+  - vscode_binary
+  - working_directory
