@@ -14,7 +14,7 @@ script:
   queue_name: "<%= queue %>"
   native: # ... array of command line arguments ...
      - "-p"
-     - "componc_cpu"
+     - "<%= queue %>"
      - "-N"
      - "1"
      - "-n"

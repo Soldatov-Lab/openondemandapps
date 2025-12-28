@@ -41,6 +41,11 @@ attributes:
   # command that launches the Jupyter notebook within the batch job
   extra_cellxgene_args: ""
 
+  queue:
+    label: "Queue"
+    widget: 'text_field'
+    value: "componc_cpu"
+
   num_cores:
     widget: "number_field"
     label: "Number of cores"
@@ -82,6 +87,7 @@ attributes:
 form:
   - modules
   - extra_cellxgene_args
+  - queue
   - num_cores
   - num_hours
   - memory
