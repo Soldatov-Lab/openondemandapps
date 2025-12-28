@@ -24,6 +24,11 @@ attributes:
     min: 0
     step: 1
   
+  gpu_type:
+    label: "GPU Type"
+    widget: "text_field"
+    help: "Enter the type of GPU you want to request (e.g., a100, a40, h100, l40s). Leave blank for any available type. This is only used if 'Number of GPUs' is greater than 0. Ensure the selected Queue supports the requested GPU type."
+  
   memory:
     widget: "number_field"
     label: "Memory (GB)"
@@ -55,6 +60,7 @@ form:
   - queue
   - num_cores
   - num_gpus
+  - gpu_type
   - num_hours
   - memory
   - excluded_nodes

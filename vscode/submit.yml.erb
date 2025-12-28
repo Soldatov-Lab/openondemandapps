@@ -19,8 +19,15 @@ script:
      - "<%= memory %>G"
      - "-t"
      - "0-<%= num_hours %>:00:00"
+     <%- if num_gpus.to_i > 0 -%>
+     <%- if gpu_type.blank? -%>
      - "--gpus"
      - "<%= num_gpus %>"
+     <%- else -%>
+     - "--gres"
+     - "gpu:<%= gpu_type %>:<%= num_gpus %>"
+     <%- end -%>
+     <%- end -%>
      <%- if !excluded_nodes.blank? -%>
      - "--exclude"
      - "<%= excluded_nodes %>"
