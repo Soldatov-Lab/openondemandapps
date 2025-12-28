@@ -8,9 +8,6 @@ echo "TIMING - Starting main script at: $(date)"
 module load <%= modules %>
 <%- end -%>
 
-# Set working directory
-cd "<%= working_directory %>"
-
 # Set PFILE
 PFILE="${PWD}/password.txt"
 
